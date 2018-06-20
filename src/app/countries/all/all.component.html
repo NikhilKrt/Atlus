@@ -1,0 +1,45 @@
+<div class="container">
+  <br>
+  <br>
+  <span>Search Name Here:</span>
+  <input class="form-control " type="text" [(ngModel)]="search" placeholder="Search...">
+  <br>
+  <br>
+  <div style="text-align: center">
+    <button type="button" class="btn btn-outline-info" (click)="goBack()">
+      <h2>
+        <b>
+          <</b> Go Back</h2>
+    </button>
+  </div>
+  <br>
+  <br>
+  <div class="row justify-content">
+
+    <div *ngFor="let reg of regions | filter:search" class="col-md-4">
+
+      <div class="card border-light ">
+        <div class="card-header text-white bg-dark q" style="text-align: center">
+          <h3>
+            <b>
+              <i> {{reg.name}}</i>
+            </b>
+          </h3>
+        </div>
+        <div [routerLink]="['/one',reg.name]" class="btn">
+          <img class="card-img-top w" src="{{reg.flag}}" alt="Card image cap">
+        </div>
+        <div class="card-footer text-muted">
+          <p>Currency:
+            <span *ngFor="let c of reg.currencies; let i = last">
+              <a [routerLink]="['/all/' + reg.name]" [queryParams]="{ 'currency' : c.code, 'name' : c.name}">{{c.name}} </a>{{i ? "" : ","}} </span>
+          </p>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+
+</div>

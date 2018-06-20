@@ -1,0 +1,89 @@
+<br>
+<br>
+<div style="text-align: center">
+  <button type="button" class="btn btn-outline-info" (click)="goBack()">
+    <h2>
+      <b>
+        <</b> Go Back</h2>
+  </button>
+</div>
+<br>
+<br>
+
+<div class="container" *ngIf="oneC">
+ <div class="row">
+   <div *ngFor="let one of oneC" class="col">
+      <div class="card mb-3">
+          <div class="card-header" style="text-align: center"><h3><b> {{one.name}}</b></h3></div>
+          <img class="card-img-top" src="{{one.flag}}" alt="Card image cap">
+          <div class="card-body bg-warning">
+              <div id="accordion">
+                  <div class="card text-warning bg-dark">
+                    <div class="card-header" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-outline-danger btn-lg btn-block " data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          Geographical Data
+                        </button>
+                      </h5>
+                    </div>
+                
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body">
+                          <p>
+                              <span class="text-muted font">Capital:</span> {{one.capital}}</p>
+                            <hr>
+                            <p>
+                              <span class="text-muted font"> Region:</span> {{one.region}}</p>
+                            <hr>
+                            <p>
+                              <span class="text-muted font">Subregion:</span> {{one.subregion}}</p>
+                            <hr>
+                            <p>
+                              <span class="text-muted font">Population:</span> {{one.population}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card text-warning bg-dark">
+                    <div class="card-header" id="headingTwo">
+                      <h5 class="mb-0">
+                        <button class="btn  btn-outline-danger btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Currency & Timezone
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                      <div class="card-body">
+                        
+      <p *ngFor="let c of one.currencies">
+          <span class="text-muted font">Currency:</span> {{c.name}}</p>
+        <hr>
+        <p>
+          <span class="text-muted font">TimeZone:</span> {{one.timezones}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card text-warning bg-dark">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn  btn-outline-danger btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                         Language(s)
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                      <div class="card-body">
+                          <p>Languages:
+                              <span *ngFor="let l of one.languages; let first=first; let last = last">
+                                <a [routerLink]="['/all/' + one.region]" [queryParams]="{ 'language' : l.iso639_1, 'name' : l.name}">{{l.name}}{{last?'':','}}</a>
+                                <br>
+                              </span>
+                            </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+   </div>
+ </div>
+</div>

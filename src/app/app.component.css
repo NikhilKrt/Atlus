@@ -1,0 +1,13 @@
+.y{
+    background: rgb(111, 9, 121);
+    border-bottom-left-radius:70px;
+    border-bottom-right-radius:70px; 
+    padding:1%;
+    color: rgba(140, 205, 207, 0.972);    
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.y:hover{   
+    box-shadow: 0 32px 64px 0 rgba(0,0,0,0.2);
+}
